@@ -75,3 +75,38 @@ $topbarzindex: 1000;
 /* end topbar */
 
 @import "sidebar";
+
+.main{
+  @include clearfix;
+  padding: $topbarheight 15px 15px;
+}
+
+.container{
+  position: relative;
+  @include clearfix;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+}
+.row{
+  position: relative;
+  @include clearfix;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col{
+  min-height: 1px;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media only screen and (min-width: 1025px) {
+  .main{
+    background-color: #fff;
+    width: calc(100% - #{$sidebarwidth});
+    margin-left: $sidebarwidth;
+  }
+
+
+}

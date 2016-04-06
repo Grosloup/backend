@@ -1,21 +1,20 @@
 /*eslint indent: ["error", 4]*/
-
 var $ = require('jquery')
 var t
-var testWindowWidth = function () {
-    function callback (evt) {
-        evt.preventDefault()
-        var target = $(this).next('ul')
-        if (target.hasClass('open')) {
-            target.slideUp().removeClass('open')
-        } else {
-            target.slideDown().addClass('open')
-        }
+function callback (evt) {
+    evt.preventDefault()
+    var target = $(this).next('ul')
+    if (target.hasClass('open')) {
+        target.slideUp().removeClass('open')
+    } else {
+        target.slideDown().addClass('open')
     }
+}
+var testWindowWidth = function () {
     if ($(window).width() < 1025) {
         $('li.has-submenu > ul').removeClass('open')
         $('li.has-submenu a').on('click', callback)
-    } else {
+    } else if ($(window).width >= 1025) {
         $('li.has-submenu > ul').attr('style', '').removeClass('open')
         $('li.has-submenu a').off('click', callback)
     }
