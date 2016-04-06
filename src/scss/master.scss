@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Cuprum:400,400italic,700,700italic);
+@mixin clearfix(){
+  &:before, &:after{
+    display: table;
+    content: ''
+  }
+  &:after{
+    clear: both;
+  }
+}
+@mixin topFixed(){
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+}
+@mixin nakedLink(){
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+  cursor: pointer;
+}
+@import "colors";
+@import "vars";
+@import "reset";
+
+html, body{
+  height: 100%;
+}
+
+body{
+  position: relative;
+  background-color: $defaultBGC;
+  font-size: $defaultFontSize;
+  font-family: $cuprum;
+  color: $defaultFontColor;
+  line-height: $cuprumLineHeigt;
+}
+.page{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+}
+/* topbar */
+$topbargutter: 15px;
+$topbarheight: 70px;
+$topbarBGC: $anthracite;
+$topbarcolor: #fff;
+$topbarzindex: 1000;
+.topbar{
+  @include topFixed;
+  height: $topbarheight;
+  z-index: $topbarzindex;
+  background-color: $topbarBGC;
+  line-height: $topbarheight;
+  color: $topbarcolor;
+}
+
+.topbar__container{
+  @include clearfix;
+  position: relative;
+  width: 100%;
+}
+
+.topbar__brand{
+  @include nakedLink;
+  display: block;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  float: left;
+  padding: 0 $topbargutter;
+}
+/* end topbar */
+
+@import "sidebar";
